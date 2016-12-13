@@ -1,10 +1,39 @@
-﻿@model IEnumerable<cis237assignment6.Models.Beverage>
+﻿@*Daniel Richards
+    CIS237
+    12/13/2016*@
+@model IEnumerable<cis237assignment6.Models.Beverage>
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Beverage List</h2>
+
+<div class="form-group">
+    <fieldset>
+        <legend>Search Filter</legend>
+        @*Render Beverage Filter*@
+        @{ 
+            using (Html.BeginForm("Filter", "Beverages", FormMethod.Post, new { @class = "form-inline" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <label for="description">Descripion</label>
+                @Html.TextBox("name", (string)ViewBag.filterDesc)
+
+                <label for="priceMin">Minimum Price</label>
+                @Html.TextBox("min", (string)ViewBag.filterMin)
+
+                <label for="priceMax">Maximum Price</label>
+                @Html.TextBox("max", (string)ViewBag.filterMax)
+                <br />
+                <input type="submit" value="Filter" class="btn btn-info pull-right" />
+            }
+        }
+    </fieldset>
+</div>
+<br />
+<br />
 
 <p>
     @Html.ActionLink("Create New", "Create")

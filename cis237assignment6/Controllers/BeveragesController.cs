@@ -10,6 +10,7 @@ using cis237assignment6.Models;
 
 namespace cis237assignment6.Controllers
 {
+    [Authorize]
     public class BeveragesController : Controller
     {
         private BeverageDRichardsEntities db = new BeverageDRichardsEntities();
@@ -17,7 +18,49 @@ namespace cis237assignment6.Controllers
         // GET: Beverages
         public ActionResult Index()
         {
-            return View(db.Beverages.ToList());
+            // Setup a variable to hold the Beverages data set
+            DbSet<Beverage> BeveragesToSearch = db.Beverages;
+
+            // Setup some strings to hold the data that might be in the session.
+            // If there is nothing in the session we can still use these variables
+            // as a default value.
+            string filterName = "";
+            string filterMin = "";
+            string filterMax = "";
+
+            // Minimum and maximum prices
+            decimal min = 0;
+            decimal max = 100;
+
+            // Check to see if there is a value in the session, and if there is,
+            // assign it to the variable that we setup to hold the value.
+            if (Session["name"] != null && !String.IsNullOrWhiteSpace((string)Session["name"]))
+            {
+                filterName = (string)Session["name"];
+            }
+            if (Session["min"] != null && !String.IsNullOrWhiteSpace((string)Session["min"]))
+            {
+                filterMin = (string)Session["min"];
+                min = Decimal.Parse(filterMin);
+            }
+            if (Session["max"] != null && !String.IsNullOrWhiteSpace((string)Session["max"]))
+            {
+                filterMax = (string)Session["max"];
+                max = Decimal.Parse(filterMax);
+            }
+
+            // Do the actual filter on the Beverages dataset
+            IEnumerable<Beverage> filtered = BeveragesToSearch.Where(beverage => beverage.price >= min &&
+                                                                                 beverage.price <= max &&
+                                                                                 beverage.name.Contains(filterName));
+
+            // Place the strings into the ViewBag so they can be displayed
+            ViewBag.filterDesc = filterName;
+            ViewBag.filterMin = filterMin;
+            ViewBag.filterMax = filterMax;
+
+            // Return the view with the filtered selection of beverages
+            return View(filtered);
         }
 
         // GET: Beverages/Details/5
@@ -112,6 +155,25 @@ namespace cis237assignment6.Controllers
             Beverage beverage = db.Beverages.Find(id);
             db.Beverages.Remove(beverage);
             db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        // Filter method. Takes data submitted from the form and
+        // stores it in the session so it can be accessed later.
+        public ActionResult Filter()
+        {
+            String name = Request.Form.Get("name");
+            String min = Request.Form.Get("min");
+            String max = Request.Form.Get("max");
+
+            // Store the form data into the session so that it can be retrieved later
+            Session["name"] = name;
+            Session["min"] = min;
+            Session["max"] = max;
+
+            // Redirect the user to the index page. The filter work will be done in the Index
             return RedirectToAction("Index");
         }
 

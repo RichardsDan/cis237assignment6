@@ -4195,6 +4195,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   float: left;
   padding: 15px 15px;
   font-size: 18px;
+  font-family:'Century Gothic';
   line-height: 20px;
 }
 
@@ -4940,6 +4941,7 @@ a.list-group-item.active > .badge,
 .jumbotron h1 {
   line-height: 1;
   color: inherit;
+  font-family:'Century Gothic';
 }
 
 .jumbotron p {

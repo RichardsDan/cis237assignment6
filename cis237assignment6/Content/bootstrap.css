@@ -279,7 +279,7 @@ table {
   }
   .table td,
   .table th {
-    background-color: #fff !important;
+    background-color: #428bca !important;
   }
   .btn > .caret,
   .dropup > .btn > .caret {
@@ -738,6 +738,19 @@ pre {
   border-radius: 4px;
 }
 
+.about-page {
+    text-align:center;
+}
+
+.support {
+    color: red;
+    font-family:Chiller;
+}
+
+.table-display {
+    background-color:#f2e3d0;
+}
+
 pre.prettyprint {
   margin-bottom: 20px;
 }
@@ -835,7 +848,6 @@ pre code {
 .col-md-1,
 .col-md-2,
 .col-md-3,
-.col-md-4,
 .col-md-5,
 .col-md-6,
 .col-md-7,
@@ -860,6 +872,14 @@ pre code {
   min-height: 1px;
   padding-right: 15px;
   padding-left: 15px;
+}
+
+.col-md-4 {
+    position: relative;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .col-xs-1,
@@ -1406,7 +1426,7 @@ pre code {
 
 table {
   max-width: 100%;
-  background-color: transparent;
+  background-color:#f29d5e;
 }
 
 th {
@@ -4935,7 +4955,7 @@ a.list-group-item.active > .badge,
   font-weight: 200;
   line-height: 2.1428571435;
   color: inherit;
-  background-color: #eeeeee;
+  background-color: #8af4fb
 }
 
 .jumbotron h1 {
@@ -4949,7 +4969,7 @@ a.list-group-item.active > .badge,
 }
 
 .container .jumbotron {
-  border-radius: 6px;
+  border-radius: 50px;
 }
 
 @media screen and (min-width: 768px) {
@@ -6244,6 +6264,10 @@ body.modal-open,
 
 .affix {
   position: fixed;
+}
+
+.beverage-display{
+    background-color: aqua;
 }
 
 @-ms-viewport {

@@ -1,4 +1,7 @@
-﻿using System;
+﻿// Daniel Richards
+// CIS 237
+// 12/15/2016
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -41,12 +44,26 @@ namespace cis237assignment6.Controllers
             if (Session["min"] != null && !String.IsNullOrWhiteSpace((string)Session["min"]))
             {
                 filterMin = (string)Session["min"];
-                min = Decimal.Parse(filterMin);
+                try
+                {
+                    min = Decimal.Parse(filterMin);
+                }
+                catch
+                {
+
+                }
             }
             if (Session["max"] != null && !String.IsNullOrWhiteSpace((string)Session["max"]))
             {
                 filterMax = (string)Session["max"];
-                max = Decimal.Parse(filterMax);
+                try
+                {
+                    max = Decimal.Parse(filterMax);
+                }
+                catch
+                {
+
+                }
             }
 
             // Do the actual filter on the Beverages dataset

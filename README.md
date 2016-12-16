@@ -3,7 +3,7 @@
 ## Due 12-15-2016 (11:59pm)
 
 ## Author
-
+Daniel Richards
 ## Description
 
 You are to create a web application using ASP.NET MVC to manage our beverage database.
@@ -11,7 +11,7 @@ The application should have the following pages and navigation:
 
 A Home page that is not the default.
 A Contact page that is not the default.
-A About page that is not the default.
+An About page that is not the default.
 A Beverages page that can only be seen when the user is logged in.
 Other CRUD related pages to augment the Beverages page.
 All of the built in user account pages.
@@ -132,5 +132,6 @@ the culprit, but I don't know which ones.
 | Total                                   | 100    |
 
 ## Outside Resources Used
-
+cis237inclass6
 ## Known Problems, Issues, And/Or Errors in the Program
+Font changes may not display properly.

@@ -738,10 +738,10 @@ pre {
   border-radius: 4px;
 }
 
+/************************************************************ NEW STUFF ************************************************/
 .about-page {
     text-align:center;
 }
-
 .support {
     color: red;
     font-family:Chiller;
@@ -749,6 +749,7 @@ pre {
 
 .table-display {
     background-color:#f2e3d0;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 pre.prettyprint {
